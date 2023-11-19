@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>dang nhap </title>
+    <meta charset="utf-8"> 
+<link rel="stylesheet" href="../css/login.css">
+<link rel="stylesheet" href="../html/Signup.html">
+</head>
+
+
+<body>
+    
+    <div class="Loginpage">
+
+        <h1 style="margin-top: 25px; margin-left: 20px;">Login</h1>
+        <hr>
+
+        <div class="form" style="display: flex;">
+
+            <div class="Loginwithother">
+                <p style="font-size: 18px; margin-left: 500px;">Log in with your social network</p>
+                <br>
+                <div style="display: flex;">
+                    <a href="" style="margin-left: 500px;"><i class="fab fa-facebook-square" style="font-size: 50px; color: #335e9c;"></i></a>
+                    <a href="" style="margin-left: 10px;"><i class="fab fa-google" style="font-size: 50px; color: red;"></i></a>
+                    <a href="" style="margin-left: 10px;"><i class="fab fa-apple" style="font-size: 55px; color: #000; margin-top: -5px;"></i></a>
+                </div>
+            </div>  
+             
+            <form id="loginForm">
+
+                <h2 style="margin-left: 50px; font-size: 20px;">Log in with your email account</h2>
+                <div style="margin-top: 50px; margin-left: 50px;">
+                    <label for="username" style="font-size: 16px;">Email:</label>
+                    <br>
+                    <input type="email" id="username" name="username" required style="width: 400px; height: 30px;">
+                    <br>
+                    <br>
+                    <label for="password" style="font-size: 16px;">Mật khẩu:</label>
+                    <br>
+                    <input type="password" id="password" name="password" required style="width: 400px; height: 30px;">
+                </div>
+                <br>
+                <input type="checkbox" name="" id="" onclick="showpass()" style="margin-left: 50px;"><span style="font-size: 18px;"> Show pass</span>
+                <br>
+                <br>
+                <button type="button" onclick="validateLogin()" style="margin-left: 50px; width: 400px; height: 40px; background-color: #234b9a; font-size: 18px; color: #fff;" >Login</button>
+               <a href="./dangnhap.html" style="text-decoration: underline;" class="Register"><h2 style="margin-left: 50px; font-size: 18px;">Don't have account</h2>
+            </form>
+<script>
+                function validateLogin() {
+                    var username = document.getElementById('username').value;
+                    var password = document.getElementById('password').value;
+
+                    // var registeredUsername = localStorage.getItem('username');
+                    // var registeredPassword = localStorage.getItem('password');
+
+                    // Kiểm tra định dạng email
+                    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(username)) {
+                        alert('Vui lòng nhập một địa chỉ email hợp lệ.');
+                        return;
+                    }
+            
+                    // Kiểm tra định dạng mật khẩu (ít nhất 8 ký tự, chứa ít nhất một chữ cái và một số)
+                    var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+                    if (!passwordRegex.test(password)) {
+                        alert('Mật khẩu phải có ít nhất 8 ký tự, bao gồm ít nhất một chữ cái và một số.');
+                        return;
+                    }
+            
+                    // Kiểm tra xem tên người dùng và mật khẩu có hợp lệ hay không
+                    alert('Đăng nhập thành công!');
+                    window.location.href = "user.html";w
+                }
+
+                function showpass() {
+                    var passwordInput = document.getElementById("password");
+                    var passwordType = passwordInput.getAttribute("type");
+
+                    if (passwordType === "password") {
+                        passwordInput.setAttribute("type", "text");
+                    } else {
+                        passwordInput.setAttribute("type", "password");
+                    }
+                }
+            </script>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>tao tai khoan</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+    <h1 style="margin-top: 25px; margin-left: 20px;">Login</h1>
+    <hr>
+
+    <div class="form" style="display: flex;">
+
+        <div class="Loginwithother">
+            <p style="font-size: 18px; margin-left: 500px;">Log in with your social network</p>
+            <br>
+            <div style="display: flex;">
+                <a href="" style="margin-left: 500px;"><i class="fab fa-facebook-square" style="font-size: 50px; color: #335e9c;"></i></a>
+                <a href="" style="margin-left: 10px;"><i class="fab fa-google" style="font-size: 50px; color: red;"></i></a>
+                <a href="" style="margin-left: 10px;"><i class="fab fa-apple" style="font-size: 55px; color: #000; margin-top: -5px;"></i></a>
+            </div>
+        </div>
+
+        <form id="signupForm">
+
+            <h2 style="margin-left: 50px; font-size: 20px;">Log in with your email account</h2>
+            <div style="margin-top: 50px; margin-left: 50px;">
+                <label for="username" style="font-size: 16px;">Email:</label>
+                <br>
+                <input type="email" id="username" name="username" required style="width: 400px; height: 30px;">
+                <br>
+                <br>
+                <div style="display: flex;">
+                    <div>
+                        <label for="Firstname" style="font-size: 16px;">Firstname: </label>
+                        <br>
+                        <input type="text" id="firstname" name="firstname" required style="width: 200px; height: 25px;">
+                    </div>
+                    <div style="margin-left: 5px;">
+                        <label for="text" style="font-size: 16px;">Lastname: </label>
+                        <br>
+                        <input type="text" id="lastname" name="lastname" required style="width: 200px; height: 25px;">
+                    </div>
+                </div>
+
+                <br>
+                <div style="display: flex;">
+                    <div>
+                        <label for="password" style="font-size: 16px;">Password: </label>
+                        <br>
+                        <input type="password" id="password" name="password" required style="width: 200px; height: 25px;">
+                    </div>
+<div style="margin-left: 5px;">
+                        <label for="text" style="font-size: 16px;">Confirm password: </label>
+                        <br>
+                        <input type="password" id="confirmpassword" name="confirmpassword" required style="width: 200px; height: 25px;">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <input type="checkbox" name="" id="" onclick="showpass()" style="margin-left: 50px;"><span style="font-size: 18px;"> Show pass</span>
+            <br>
+            <br>
+            <button type="button" onclick="checksignup()" style="margin-left: 50px; width: 400px; height: 40px; background-color: #234b9a; font-size: 18px; color: #fff;">Login</button>
+            <a href="../html/Login.html" class="Register">
+                <h2 style="margin-left: 50px; font-size: 18px;">Log in</h2>
+            </a>
+        </form>
+
+        <script>
+            function checksignup() {
+                var firstname = document.getElementById('firstname').value;
+                var lastname = document.getElementById('lastname').value;
+                var password = document.getElementById('password').value;
+                var confirmpassword = document.getElementById('confirmpassword').value;
+                var email = document.getElementById('username').value;
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+                if (!passwordRegex.test(password)) {
+                    alert('Mật khẩu phải có ít nhất 8 ký tự, bao gồm ít nhất một chữ cái và một số.');
+                } else if (!emailRegex.test(email)) {
+                    alert('Vui lòng nhập một địa chỉ email hợp lệ.');
+                } else if (confirmpassword !== password) {
+                    alert('Mật khẩu xác nhận không đúng');
+                } else {
+                    alert('Đăng kí thành công');
+                    window.location.href = "Login.html";
+                }
+            }
+
+            function showpass() {
+                var confirmpasswordInput = document.getElementById("confirmpassword");
+                var confirmpasswordType = confirmpasswordInput.getAttribute("type");
+                var passwordInput = document.getElementById("password");
+                var passwordType = passwordInput.getAttribute("type");
+
+                if (passwordType === "password" || confirmpasswordType === "password") {
+                    passwordInput.setAttribute("type", "text");
+                    confirmpasswordInput.setAttribute("type", "text");
+                } else {
+                    passwordInput.setAttribute("type", "password");
+                    confirmpasswordInput.setAttribute("type", "password");
+                }
+            }
+        </script>
+
+</body>
+
+</html>
